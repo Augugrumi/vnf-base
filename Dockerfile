@@ -11,17 +11,20 @@ ENV  LANG=en_US.UTF-8 \
      LC_COLLATE=C \
      LC_CTYPE=en_US.UTF-8 \
      ZABBIX_SERVER_PORT=10050 \
+     TIMEZONE=GMT
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY zabbixconfig.sh /usr/bin/zabbixconfig
-
-RUN apk add --no-cache --virtual py2-pip git zabbix-agent net-snmp && \
+RUN apk add --no-cache --virtual py2-pip git && \
     pip install --upgrade pip && \
     pip install pika && \
     pip install gitpython && \
     pip install supervisor && \
-    cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
-    mkdir /opt/openbaton && \
+    mkdir -p /opt/openbaton && \
     pip install openbaton-ems && \
+    mkdir -p /etc/supervisor/conf.d && \
+    mkdir -p /var/log/supervisord/ && \
+    apk add --no-cache zabbix-agent net-snmp
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY zabbixconfig.sh /usr/bin/zabbixconfig
 
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/conf.d/supervisord.conf"]

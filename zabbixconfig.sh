@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 readonly ZABBIX_CONFIG_FILE_PATH="/etc/zabbix/zabbix_agentd.conf"
 

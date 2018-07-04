@@ -33,7 +33,7 @@ function msg () {
 
 msg info "Configurating zabbix agent"
 
-if [ -a $ZABBIX_CONFIG_FILE_PATH ]
+if [ -a "$ZABBIX_CONFIG_FILE_PATH" ]
 then
     msg info "File already existing, deleting it..."
     rm $ZABBI_CONFIG_FILE_PATH

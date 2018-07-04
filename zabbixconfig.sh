@@ -45,6 +45,8 @@ cat <<EOF | tee $ZABBIX_CONFIG_FILE_PATH
 Server=$ZABBIX_SERVER_IP
 Hostname=$(awk 'END{print $1}' /etc/hosts)
 ListenPort=$ZABBIX_SERVER_PORT
+LogType=file
+LogFile=/var/log/zabbix/zabbixagent.log
 EOF
 
 check $? "Impossible to create configuration file!"

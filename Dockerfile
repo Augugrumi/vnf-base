@@ -46,7 +46,7 @@ ENV  LANG=en_US.UTF-8 \
 RUN adduser -S vnf && \
     mkdir -p /var/log/supervisord && \
     mkdir -p /var/log/zabbix/ && \
-    mkdir -p /etc/openbaton/ && \
+    mkdir -p /etc/openbaton/ems && \
     chown vnf -R /var/log/supervisord && \
     chown vnf -R /var/log/zabbix
 

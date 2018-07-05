@@ -8,7 +8,7 @@
 
 set_dbg "true"
 
-set_config_path "/etc/openbaton/openbaton-ems.properties"
+set_config_path "/etc/openbaton/ems/conf.ini"
 
 msg info "Configurating ems agent"
 
